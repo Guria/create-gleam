@@ -21,10 +21,8 @@ pub fn update(
 
 pub fn main() {
   select("#app")
-  |> update(
-    "innerHTML",
-    fn(_) {
-      "<div>
+  |> update("innerHTML", fn(_) {
+    "<div>
     <a href='https://vitejs.dev' target='_blank'>
       <img src='/vite.svg' class='logo' alt='Vite logo' />
     </a>
@@ -39,8 +37,7 @@ pub fn main() {
       Click on the Vite and Gleam logos to learn more
     </p>
   </div>"
-    },
-  )
+  })
 
   event_listener(select("#counter"), "click", onclick)
 }

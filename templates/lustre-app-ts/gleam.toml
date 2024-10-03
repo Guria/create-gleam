@@ -8,6 +8,6 @@ target = "javascript"
 typescript_declarations = true
 
 [dependencies]
-gleam_stdlib = "~> 0.30"
-lustre = "~> 3.0.0-rc.8"
+gleam_stdlib = ">= 0.40.0 and < 1.0.0"
+lustre = ">= 4.5.0 and < 5.0.0"
 

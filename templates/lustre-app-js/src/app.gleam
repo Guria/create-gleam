@@ -1,10 +1,10 @@
 import gleam/int
 import gleam/io
 import lustre
-import lustre/element/html.{a, button, div, h1, img, p}
-import lustre/element.{text}
-import lustre/event.{on_click}
 import lustre/attribute.{alt, class, href, id, rel, src, target}
+import lustre/element.{text}
+import lustre/element/html.{a, button, div, h1, img, p}
+import lustre/event.{on_click}
 
 pub fn main() {
   let app = lustre.simple(init, update, render)
@@ -31,40 +31,26 @@ fn update(state, msg) {
 }
 
 fn render(state) {
-  div(
-    [id("app")],
-    [
-      div(
-        [],
+  div([id("app")], [
+    div([], [
+      a([href("https://vitejs.dev"), target("_blank"), rel("noreferrer")], [
+        img([src("/vite.svg"), class("logo"), alt("Vite logo")]),
+      ]),
+      a(
         [
-          a(
-            [href("https://vitejs.dev"), target("_blank"), rel("noreferrer")],
-            [img([src("/vite.svg"), class("logo"), alt("Vite logo")])],
-          ),
-          a(
-            [
-              href("https://hexdocs.pm/lustre/3.0.0-rc.8/index.html"),
-              target("_blank"),
-              rel("noreferrer"),
-            ],
-            [img([src("/gleam.svg"), class("logo gleam"), alt("Gleam logo")])],
-          ),
-          h1([], [text("Vite + Lustre")]),
-          div(
-            [class("card")],
-            [
-              button(
-                [on_click(Incr)],
-                [text("count is "), text(int.to_string(state))],
-              ),
-            ],
-          ),
+          href("https://hexdocs.pm/lustre/"),
+          target("_blank"),
+          rel("noreferrer"),
         ],
+        [img([src("/gleam.svg"), class("logo gleam"), alt("Gleam logo")])],
       ),
-      p(
-        [class("read-the-docs")],
-        [text("Client on the Vite and Gleam logos to learn more")],
-      ),
-    ],
-  )
+      h1([], [text("Vite + Lustre")]),
+      div([class("card")], [
+        button([on_click(Incr)], [text("count is "), text(int.to_string(state))]),
+      ]),
+    ]),
+    p([class("read-the-docs")], [
+      text("Click on the Vite and Gleam logos to learn more"),
+    ]),
+  ])
 }
